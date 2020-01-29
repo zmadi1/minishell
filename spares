@@ -1,0 +1,119 @@
+t_list *split_path(char *path, char c)
+{
+	t_list *res = NULL;
+	t_list *head = NULL;
+	int i = 0;
+	int j = 0;
+
+	path += ft_indexof(path, '/');
+	char *temp = NULL;
+	while (path[i])
+	{
+		while (path[i] == 'c')
+			i++;
+		if (path[i] != 'c' && path[i] != '\0')
+		{
+			j = i;
+			while (path[i] != 'c' && path[i])
+				i++;
+			temp = ft_strsub(path, j, i - j);
+			res = ft_lstnew(temp, strlen(temp));
+			ft_lstadd(&head, res);
+		}
+		ft_strdel(&temp);
+	}
+	return (head);
+}
+
+
+/* 	if (!(node->content)) no segfault
+
+	{
+		puts("tried to split");
+		args = ft_strsplit(node->content, ' ');
+	 printf("%s:::",node->content);
+		exit(0); 
+			return (args);
+	}
+	else
+		{
+			return (NULL);
+			} */
+	/* 	if ((args = ft_strsplit(node->content, ' ') )!= NULL)
+		{
+			free(node->content);
+			node->content = NULL;
+			free(node);
+			node = NULL;
+			return (args);
+		}
+		else
+		{ 
+			args = (char**)malloc(1 * sizeof(char*));
+			args[0] = ft_strdup(node->content);
+			free(node->content);
+			node->content = NULL;
+			free(node);
+			node = NULL;
+			//args[1] = NULL;
+			return (args);
+		} */
+/* void	del_2d_peasants_data_structure(char **strings)
+{
+	int		i;
+
+	i = 0;
+	if (!strings || !*strings)
+		return ;
+	while (strings[i])
+	{
+		ft_strdel(&strings[i]);
+		i++;
+	}
+	free(strings);
+	strings = NULL;
+} */
+
+
+		/* temp = ft_epur(node->content);
+		new = ft_strdup(temp);
+		ft_strdel(&temp);
+		args = ft_strsplit(new, ' ');
+		ft_strdel(&new); */
+
+		/* j = get_2darr_len(*env);
+		new = gimme_2darr_space(j + 2);
+		i = 0;
+		while ((*env)[i])
+		{
+			new[i] = ft_strdup((*env)[i]);
+			i++;
+		}		
+		if ((j = ft_indexof(item[1], '=')) != -1)
+			new[i++] = ft_strdup(item[1]);
+		else
+		{
+			temp = ft_strjoin(item[1], "=");
+			new[i++] = ft_strjoin(temp, item[2]);
+			ft_strdel(&temp);		 
+		} 
+		new[i] = NULL;
+		mk_2D_arr_clean(env);
+		*env = new; */
+			/* else if (!ft_strncmp("/", av[0], 1))
+ 	{
+		xecute = run_exe(*envcpy, av[0]);
+		x = fork();
+		if (x > 0)
+			waitpid(x, &status, 0 | WUNTRACED);
+		else if (!x)
+		{
+			if (execve(xecute, av, *envcpy) == -1)
+				ft_putendl_fd("No such file or directory", 2);
+		}
+		else
+			ft_putstr("fork failed, could'nt create a new process -_-");
+	} */
+		exec_builtin(av, envcpy);
+	/* else if (!ft_strcmp(av[0], "cd"))
+		cd_fun(envcpy, "PWD"); */
